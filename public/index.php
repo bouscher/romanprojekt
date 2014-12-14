@@ -1,31 +1,41 @@
 <?php
 
 error_reporting(E_ALL);
+if (!isset($_GET['_url'])) {
+    $_GET['_url'] = '/';
+}
+define('APP_PATH', realpath('..'));
 
+
+/**
+ * Read the configuration
+ */
+$config = include APP_PATH . "/app/config/config.php";
+require APP_PATH . "/app/config/loader.php";
+/**
+ * Include the loader
+ */
 try {
-
     /**
-     * Read the configuration
+     * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
      */
-    $config = include __DIR__ . "/../app/config/config.php";
-
+    $di = new \Phalcon\DI\FactoryDefault();
     /**
-     * Read auto-loader
+     * Include the application services
      */
-    include __DIR__ . "/../app/config/loader.php";
-
-    /**
-     * Read services
-     */
-    include __DIR__ . "/../app/config/services.php";
-
+    require APP_PATH . "/app/config/services.php";
+	
     /**
      * Handle the request
      */
-    $application = new \Phalcon\Mvc\Application($di);
-
-    echo $application->handle()->getContent();
-
-} catch (\Exception $e) {
-    echo $e->getMessage();
+    $application = new Phalcon\Mvc\Application($di);	
+	
+	
+	
+	
+	echo $application->handle()->getContent();
+} catch (Phalcon\Exception $e) {
+	echo $e->getMessage();
+} catch (PDOException $e){
+	echo $e->getMessage();
 }
