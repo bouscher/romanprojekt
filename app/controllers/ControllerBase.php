@@ -1,5 +1,5 @@
 <?php
-
+namespace romanprojekt\Controllers;
 use Phalcon\Mvc\Controller as Controller,
 	Phalcon\Mvc\Dispatcher,
 	Phalcon\DI\FactoryDefault as PhDi,
@@ -14,12 +14,57 @@ class ControllerBase extends Controller
     */
    public function beforeExecuteRoute(Dispatcher $dispatcher)
    {
-           $this->requestInitialize();
+          $returnVal=true;
+		
+		
+		if ('1' != $this->config->application->debug) {
+		
+			$this->view->cache(array('key' => $key));
+			if ($this->view->getCache()->exists($key)) {
+				$returnVal= false;
+			}
+		}
+			
+		$auth = $this->session->get('auth');
+		$identity=$this->auth->getIdentity();
+		
+		
+		
+		
+		  
+            $controllerName = $dispatcher->getControllerName();
+		 
+            $actionName = $dispatcher->getActionName();
+		
+			
+            if (!$auth && $controllerName != 'index' && $actionName != 'index' && $controllerName!='session') {
+                $this->flash->notice('You don\'t have access to this module: ' . $controllerName . ':' . $actionName);
+                
+		}else{
+		$this->requestInitialize();
+            }
+		
+		
+	return $returnVal;
     }
     
     public function requestInitialize()
     {
-        
+        if($this->config->application->debug){
+			$baseUrl = $this->config->application->development->baseUri;
+		}else{
+			$baseUrl = $this->config->application->production->baseUri;
+		}
 	$this->view->setTemplateAfter('main');
+    }
+    
+    protected function forward($uri){
+    	$uriParts = explode('/', $uri);
+    	return $this->dispatcher->forward(
+    		array(
+    			'controller' => $uriParts[0], 
+    			'action' => $uriParts[1]
+    		)
+    	);
     }
 }

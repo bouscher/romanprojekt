@@ -3,6 +3,7 @@
 use Phalcon\Mvc\Url as UrlResolver;
 use Phalcon\Mvc\View\Engine\Volt;
 use Phalcon\Mvc\View;
+use Phalcon\Crypt;
 use Phalcon\Db\Adapter\Pdo\Mysql as DatabaseConnection;
 use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Logger\Adapter\File as FileLogger;
@@ -11,7 +12,7 @@ use Phalcon\Mvc\Model\Metadata\Memory as MemoryMetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Phalcon\Cache\Backend\File as FileCache;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
-use nltool\Notifications\Checker as NotificationsChecker;
+use romanprojekt\Auth\Auth;
 $di->set(
     'view',
     function () use ($config) {
@@ -25,7 +26,25 @@ $di->set(
         return $view;
     },
     true
+
 );
+    
+/**
+ * Crypt service
+ */
+$di->set('crypt', function () use ($config) {
+    $crypt = new Crypt();    
+    $crypt->setKey($config->application->cryptSalt);
+    return $crypt;
+});
+
+/**
+ * Custom authentication component
+ */
+$di->set('auth', function () {
+    return new Auth();
+});
+
 /**
  * The URL component is used to generate all kind of urls in the application
  */

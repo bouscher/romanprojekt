@@ -11,7 +11,16 @@ $router->add(
 		'namespace'  => 'romanprojekt\Controllers',
 	)
 );
+$router->add(
+	'/', 
+	array(
+		
+		'controller' => 'index',
+		'action' => 'index',
 
+		'namespace'  => 'romanprojekt\Controllers',
+	)
+);
 $router->add(
 	'/:controller[/]{0,1}', 
 	array(

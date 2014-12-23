@@ -8,13 +8,9 @@ return new \Phalcon\Config(array(
         'viewsDir'       => APP_PATH . '/app/views/',
         'pluginsDir'     => APP_PATH . '/app/plugins/',
         'libraryDir'     => APP_PATH . '/app/library/',
-		'messagesDir'     => APP_PATH . '/app/messages/',
-		'frontendDir'     => APP_PATH . '/app/modules/frontend/',
-		'frontendControllersDir'     => APP_PATH . '/app/modules/frontend/controllers',
-		'formsDir'     => APP_PATH . '/app/forms',
-		'backendDir'     => APP_PATH . '/app/modules/backend/',
-		'backendControllersDir'     => APP_PATH . '/app/modules/backend/controllers',
-		'appsDir' => APP_PATH.'/app/',
+	'messagesDir'     => APP_PATH . '/app/messages/',		
+	'formsDir'     => APP_PATH . '/app/forms',	
+	'appsDir' => APP_PATH.'/app/',
         'development'    => array(
             'staticBaseUri' => '/romanprojekt/',
             'baseUri'       => '/romanprojekt/'
@@ -31,7 +27,7 @@ return new \Phalcon\Config(array(
         'port'     => 25,
         'security' => "tls",
         'username' => "mailing@iq-pi.org",
-        'password' => "hpkYhxr&mdm7",
+        'password' => "hpkYhxr&md",
 		'mailcycle' => 300
     ),
 	
@@ -45,7 +41,7 @@ return new \Phalcon\Config(array(
 			'host'     => 'localhost',
 			'username' => 'root',
 			'password' => '',
-			'dbname'   => 'romanprojekt',
+			'dbname'   => 'collabtool',
 			'charset'  => 'utf8'
 		)
 		
