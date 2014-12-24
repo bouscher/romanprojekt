@@ -51,6 +51,7 @@ CREATE TABLE fileobject (
 	title varchar(255) COLLATE utf8_general_ci NOT NULL,	
 	usergroup int(11) DEFAULT '0' NOT NULL,	
 	description mediumtext,	
+        filepath varchar(255) COLLATE utf8_general_ci NOT NULL,        
   PRIMARY KEY (uid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 

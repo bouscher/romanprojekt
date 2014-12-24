@@ -1,5 +1,5 @@
 <?php
-namespace nltool\Models;
+namespace romanprojekt\Models;
 use Phalcon\Mvc\Model;
 /**
  * Description of Contentobjects

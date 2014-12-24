@@ -3002,8 +3002,8 @@ var dzsap_globalidind = 20;
 
 //                console.info(ajax_view_submitted);
 
-                if(ajax_view_submitted=='off'){
-
+                if(ajax_view_submitted=='on'){
+                      console.log(o.settings_php_handler);
                     $.ajax({
                         type: "POST",
                         url: o.settings_php_handler,

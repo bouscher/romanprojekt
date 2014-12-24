@@ -17,8 +17,8 @@ class IndexController extends ControllerBase
 	}else{
 		//$this->flashSession->success('Willkommen '.$auth['username']);
 		$this->dispatcher->forward(array(
-            "controller" => "index",
-            "action" => "overview"
+            "controller" => "fileobject",
+            "action" => "index"
 				));
 			
 		}

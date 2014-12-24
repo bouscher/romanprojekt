@@ -56,6 +56,7 @@ class ControllerBase extends Controller
 			$baseUrl = $this->config->application->production->baseUri;
 		}
 	$this->view->setTemplateAfter('main');
+        $this->view->setVar('baseurl', $baseUrl);
     }
     
     protected function forward($uri){
