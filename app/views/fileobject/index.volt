@@ -9,7 +9,7 @@
 <div class="items">
     
     
-        <div class="audioplayer-tobe" style="width:100%; " data-scrubbg="{{ baseurl }}/public/res/{{file.title}}_bg.png" data-scrubprog="{{ baseurl }}/public/res/{{file.title}}_prog.png" data-videoTitle="{{file.title}}" data-type="normal" data-source="{{ baseurl }}public/res/{{file.filepath}}">            
+        <div class="audioplayer-tobe" style="width:100%; " data-scrubbg="{{ baseurl }}public/res/{{file.title}}_bg.png" data-scrubprog="{{ baseurl }}public/res/{{file.title}}_prog.png" data-videoTitle="{{file.title}}" data-type="normal" data-source="{{ baseurl }}{{file.filepath}}">            
             <div class="menu-description">                
                 <span class="the-artist">{{ file.title }}</span>                
                 <p>{{file.description}}</p>
@@ -23,3 +23,4 @@
 
 
 </div>
+<input type="hidden" value="{{feuserName}}" id="feuserName">

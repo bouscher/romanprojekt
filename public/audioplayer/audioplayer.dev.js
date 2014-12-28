@@ -565,7 +565,7 @@ var dzsap_globalidind = 20;
 //                console.info(o.design_skin, type, o.skinwave_comments_enable, o.design_skin=='skin-wave' && (type=='audio'||type=='soundcloud') && o.skinwave_comments_enable=='on');
 
                 if(o.design_skin=='skin-wave' && (type=='audio'||type=='soundcloud') && o.skinwave_comments_enable=='on'){
-                    cthis.appendOnce('<div class="comments-holder"><div class="the-bg"></div></div><div class="clear"></div><div class="comments-writer"><div class="comments-writer-inner"><div class="setting"><div class="setting-label"></div><input placeholder="Your email.." name="comment-email" type="text" class="comment-input"/><input name="comment-text" placeholder="Your comment.." type="text" class="comment-input"/><button class="submit-ap-comment dzs-button float-right">Submit</button><button class="cancel-ap-comment dzs-button float-right">Cancel</button><div class="clear"></div></div></div></div>');
+                    cthis.appendOnce('<div class="comments-holder"><div class="the-bg"></div></div><div class="clear"></div><div class="comments-writer"><div class="comments-writer-inner"><div class="setting"><div class="setting-label"></div><span style="color:#fff">'+o.skinwave_comments_account+'</span><br><input placeholder="Hashtags mit führendem # und kommasepariert" name="hashtags" type="text" class="comment-input"/><input name="comment-text" placeholder="Your comment.." type="text" class="comment-input"/><button class="submit-ap-comment dzs-button float-right">Submit</button><button class="cancel-ap-comment dzs-button float-right">Cancel</button><div class="clear"></div></div></div></div>');
                     _commentsHolder = cthis.find('.comments-holder').eq(0);
                     _commentsWriter = cthis.find('.comments-writer').eq(0);
 
@@ -710,6 +710,9 @@ var dzsap_globalidind = 20;
             function click_comments_bg(e){
                 var _t = $(this);
                 var lmx = parseInt(e.clientX, 10) - _t.offset().left;
+                
+                /*TODO tstamp !!!*/
+                console.log(time_total *( (lmx / _t.width()) * 100)/100);
                 sposarg = (lmx / _t.width()) * 100 + '%';
                 var argcomm = htmlEncode('');
 
@@ -724,9 +727,9 @@ var dzsap_globalidind = 20;
                     }
                 }
 
-                if(o.skinwave_comments_account!='none'){
+                /*if(o.skinwave_comments_account!='none'){
                     cthis.find('input[name=comment-email]').remove();
-                }
+                }*/
 
                 _commentsHolder.find('.a-comment.placeholder').remove();
                 _commentsHolder.append('<span class="dzstooltip-con placeholder" style="left:'+sposarg+';"><div class="the-avatar" style="background-image: url('+o.skinwave_comments_avatar+')"></div></span>');
@@ -745,10 +748,10 @@ var dzsap_globalidind = 20;
                 if(cthis.find('input[name=comment-email]').length>0){
                     var regex_mail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-                    if(regex_mail.test(cthis.find('input[name=comment-email]').eq(0).val())==false){
+                   /* if(regex_mail.test(cthis.find('input[name=comment-email]').eq(0).val())==false){
                         alert('please insert email, your email is just used for gravatar. it will not be sent or stored anywhere');
                         return false;
-                    }
+                    }*/
 
                     comm_author = String(cthis.find('input[name=comment-email]').eq(0).val()).split('@')[0];
                     o.skinwave_comments_account = comm_author;
@@ -759,11 +762,12 @@ var dzsap_globalidind = 20;
                 }
                 comm_author = o.skinwave_comments_account;
 
-                var aux = '<span class="dzstooltip-con" style="left:'+sposarg+'"><span class="dzstooltip arrow-from-start transition-slidein arrow-bottom skin-black" style="width: 250px;"><span class="the-comment-author">@'+comm_author+'</span> says:<br>';
+                var aux = '<span class="dzstooltip-con" style="left:'+sposarg+'"><span class="dzstooltip arrow-from-start transition-slidein arrow-bottom skin-black" style="width: 250px;"><span class="the-comment-author">'+cthis.find('input[name=hashtags]').eq(0).val()+'</span><br>';
                 aux+=htmlEncode(cthis.find('input[name=comment-text]').eq(0).val());
-                aux+='</span><div class="the-avatar" style="background-image: url('+o.skinwave_comments_avatar+')"></div></span>';
+                aux+='<br> ...sagt '+o.skinwave_comments_account+'</span> <div class="the-avatar" style="background-image: url('+o.skinwave_comments_avatar+')"></div></span>';
+                
+                skinwave_comment_publish(aux);
                 cthis.find('input[name=comment-text]').eq(0).val('');
-                skinwave_comment_publish(aux)
 
                 hide_comments_writer();
 
@@ -1333,10 +1337,15 @@ var dzsap_globalidind = 20;
             }
             function skinwave_comment_publish(argp){
                 //only handles ajax call + result
+                console.log(cthis.find('input[name=comment-text]'));
                 var mainarg = argp;
+                var hashtags=cthis.find('input[name=comment-email]').eq(0).val();
+                var comment =cthis.find('input[name=comment-text]').eq(0).val();
                 var data = {
                     action: 'dzsap_front_submitcomment',
                     postdata: mainarg,
+                    comment: comment,
+                    hashtags:hashtags,
                     playerid: the_player_id
                 };
 
