@@ -1,5 +1,6 @@
 {% include 'partials/flash-messages.volt' %}
 {{ content() }}
+{%- if session.get('auth') -%}
 <div id="main-content" class="main">
 <h1>die Sitzungen: Mitschnitte</h1>
 <div class="ap-wrapper center-ap" style="width:100%;">
@@ -24,3 +25,4 @@
 
 </div>
 <input type="hidden" value="{{feuserName}}" id="feuserName">
+{% endif %}

@@ -8,6 +8,7 @@ class IndexController extends ControllerBase
     {
         $auth = $this->session->get('auth');
 	$this->_loginForm = new LoginForm();
+        
 	if(!$auth){			
             $this->view->form = $this->_loginForm;
 			/*$this->dispatcher->forward(array(
