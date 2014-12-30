@@ -21,7 +21,7 @@ jQuery(document).ready(function($){
                 ,skinwave_comments_enable:'on'
                 ,skinwave_comments_account:feuserName
                 ,playfrom:'0',
-        'settings_php_handler':'comments/create/'
+        'settings_php_handler':'filecomments/create/'
         };
         dzsag_init('#'+playerid,{
         'transition':'fade'

@@ -4,7 +4,7 @@
 <div id="main-content" class="main">
 <h1>die Sitzungen: Mitschnitte</h1>
 <div class="ap-wrapper center-ap" style="width:100%;">
-<div class="the-bg" style=" background-image: url(img/bg.jpg);"></div>
+
  {% for file in files %}
 <div id="ag_{{file.uid}}" class="audiogallery" style="opacity:0; margin-top: 70px;">
 <div class="items">
