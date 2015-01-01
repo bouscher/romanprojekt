@@ -17,6 +17,7 @@ class FileobjectController extends ControllerBase
         ));
       
         $user=$this->auth->getIdentity();
+        
         $this->view->setVar('files',$filerecords);
         $this->view->setVar('feuserName',$user['username']);
     }

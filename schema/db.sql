@@ -85,3 +85,11 @@ CREATE TABLE hashtags (
 	usergroup int(11) DEFAULT '0' NOT NULL,
   PRIMARY KEY (uid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+DROP TABLE IF EXISTS filecomments_hashtags_lookup;
+CREATE TABLE filecomments_hashtags_lookup (
+	uid int(11) NOT NULL auto_increment,
+	uid_local int(11) DEFAULT '0' NOT NULL,
+	uid_foreign int(11) DEFAULT '0' NOT NULL,
+  PRIMARY KEY (uid)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

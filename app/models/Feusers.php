@@ -2,6 +2,7 @@
 namespace romanprojekt\Models;
 use Phalcon\Mvc\Model\Validator\Email as EmailValidator;
 use Phalcon\Mvc\Model\Validator\Uniqueness as UniquenessValidator;
+Model::setup(['notNullValidations' => false]);
 class Feusers extends \Phalcon\Mvc\Model{
     public function validation()
     {

@@ -19,6 +19,7 @@ function htmlDecode(value){
 var dzsap_list = [];
 var dzsap_ytapiloaded = false;
 var dzsap_globalidind = 20;
+var tstamp=0;
 (function($) {
 
     $.fn.prependOnce = function(arg, argfind) {
@@ -712,7 +713,7 @@ var dzsap_globalidind = 20;
                 var lmx = parseInt(e.clientX, 10) - _t.offset().left;
                 
                 /*TODO tstamp !!!*/
-                console.log(time_total *( (lmx / _t.width()) * 100)/100);
+                tstamp=time_total *( (lmx / _t.width()) * 100)/100;
                 sposarg = (lmx / _t.width()) * 100 + '%';
                 var argcomm = htmlEncode('');
 
@@ -1339,14 +1340,15 @@ var dzsap_globalidind = 20;
                 //only handles ajax call + result
                 console.log(cthis.find('input[name=comment-text]'));
                 var mainarg = argp;
-                var hashtags=cthis.find('input[name=comment-email]').eq(0).val();
+                var hashtags=cthis.find('input[name=hashtags]').eq(0).val();
                 var comment =cthis.find('input[name=comment-text]').eq(0).val();
                 var data = {
                     action: 'dzsap_front_submitcomment',
                     postdata: mainarg,
                     comment: comment,
                     hashtags:hashtags,
-                    playerid: the_player_id
+                    playerid: the_player_id,
+                    tstamp:tstamp
                 };
 
 
