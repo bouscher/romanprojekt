@@ -712,7 +712,7 @@ var tstamp=0;
                 var _t = $(this);
                 var lmx = parseInt(e.clientX, 10) - _t.offset().left;
                 
-                /*TODO tstamp !!!*/
+                /* tstamp !!!*/
                 tstamp=time_total *( (lmx / _t.width()) * 100)/100;
                 sposarg = (lmx / _t.width()) * 100 + '%';
                 var argcomm = htmlEncode('');
@@ -1348,7 +1348,8 @@ var tstamp=0;
                     comment: comment,
                     hashtags:hashtags,
                     playerid: the_player_id,
-                    tstamp:tstamp
+                    tstamp:tstamp,
+                    positionpercent:sposarg
                 };
 
 

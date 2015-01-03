@@ -33,8 +33,8 @@ CREATE TABLE feusers (
 
 LOCK TABLES feusers WRITE;
 INSERT INTO feusers VALUES 
-(1,0,NOW(),NOW(),0,0,0,'philipp','$2a$10$3d34c49b983bab20eeba8ujVly.hSvzZ2O00oX2EUHgLNT/B73t8K','','','','phil@ephemeroid.net','','','',0,'',1,1,1,0),
-(2,0,NOW(),NOW(),0,0,0,'credo','$2a$10$3d34c49b983bab20eeba8uqWEdBD.U0IdUiRDWwayv7FUZcdOEPtm','','','','phil@ephemeroid.net','','','',0,'',1,1,1,0);
+(1,0,NOW(),NOW(),0,0,0,'philipp','$2a$10$3d34c49b983bab20eeba8ujVly.hSvzZ2O00oX2EUHgLNT/B73t8K','','','','phil@ephemeroid.net','','','',0,'public/img/icon-p.png',1,1,1,0),
+(2,0,NOW(),NOW(),0,0,0,'credo','$2a$10$3d34c49b983bab20eeba8uqWEdBD.U0IdUiRDWwayv7FUZcdOEPtm','','','','phil@ephemeroid.net','','','',0,'public/img/icon-c.png',1,1,1,0);
 
 UNLOCK TABLES;
 

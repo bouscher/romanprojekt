@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
    var feuserName=jQuery('#feuserName').val();
-        
+    var feuserIcon=jQuery('#feuserIcon').val();
     
     jQuery('.audiogallery').each(function(index,element){
        var playerid=jQuery(element).attr('id');
@@ -21,6 +21,7 @@ jQuery(document).ready(function($){
                 ,skinwave_comments_enable:'on'
                 ,skinwave_comments_account:feuserName
                 ,skinwave_comments_retrievefromajax:"on"
+                ,skinwave_comments_avatar:feuserIcon
                 ,playfrom:'0',
         'settings_php_handler':'filecomments/switch/'
         };

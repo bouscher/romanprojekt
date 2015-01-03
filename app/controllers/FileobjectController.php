@@ -20,6 +20,8 @@ class FileobjectController extends ControllerBase
         
         $this->view->setVar('files',$filerecords);
         $this->view->setVar('feuserName',$user['username']);
+        $this->view->setVar('feuserIcon',$user['company']);
+        
     }
     public function createAction(){
         

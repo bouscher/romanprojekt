@@ -11,8 +11,9 @@ class Filecomments extends Model{
 	
     public function initialize()
     {
-        $this->belongsTo("pid", "romanprojekt\Models\fileobject", "uid",array('alias' => 'fileobject'));
-	$this->hasManyToMany("uid", "nltool\Models\Filecomments_Hashtags_lookup", "uid_local", "uid_foreign", "nltool\Models\Hashtags", "uid",array('alias' => 'hashtags'));
+        $this->belongsTo("pid", "romanprojekt\Models\Fileobject", "uid",array('alias' => 'fileobject'));
+        $this->belongsTo("pid", "romanprojekt\Models\Feusers", "uid",array('alias' => 'feuser'));
+	$this->hasManyToMany("uid", "romanprojekt\Models\Filecomments_hashtags_lookup", "uid_local", "uid_foreign", "romanprojekt\Models\Hashtags", "uid",array('alias' => 'hashtags'));
     }
 	    
 }
