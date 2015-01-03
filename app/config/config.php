@@ -43,6 +43,14 @@ return new \Phalcon\Config(array(
 			'password' => '',
 			'dbname'   => 'collabtool',
 			'charset'  => 'utf8'
+		),
+                'production'=>array(
+			'adapter'  => 'Mysql',
+			'host'     => '002.mysql.db.fge.5hosting.com',
+			'username' => 'u1272_admin',
+			'password' => 'Raskolnikow1979',
+			'dbname'   => 'db1272_collabtool',
+			'charset'  => 'utf8'
 		)
 		
 	)

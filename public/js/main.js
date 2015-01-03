@@ -20,8 +20,9 @@ jQuery(document).ready(function($){
                 ,skinwave_comments_playerid:playerid
                 ,skinwave_comments_enable:'on'
                 ,skinwave_comments_account:feuserName
+                ,skinwave_comments_retrievefromajax:"on"
                 ,playfrom:'0',
-        'settings_php_handler':'filecomments/create/'
+        'settings_php_handler':'filecomments/switch/'
         };
         dzsag_init('#'+playerid,{
         'transition':'fade'
