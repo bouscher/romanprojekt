@@ -30,3 +30,14 @@ $router->add(
 		'namespace'  => 'romanprojekt\Controllers',
 	)
 );
+
+$router->add(
+	'/:controller/:action/:int[/]{0,1}', 
+	array(
+		
+		'controller' => 1,
+		'action' => 2,
+		'uid'=>3,		
+		'namespace'  => 'romanprojekt\Controllers',
+	)
+);

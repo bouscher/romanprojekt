@@ -91,7 +91,7 @@ class SessionController extends ControllerBase
 	public function logoutAction()
     {
         //Destroy the whole session
-		$this->flashSession->success($this->translate('logout'));
+		
         $this->session->destroy();
 		$this->response->redirect(""); 
 				$this->view->disable(); 

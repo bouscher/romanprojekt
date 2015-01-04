@@ -55,6 +55,21 @@ CREATE TABLE fileobject (
   PRIMARY KEY (uid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+LOCK TABLES fileobject WRITE;
+INSERT INTO fileobject VALUES 
+(1,0,NOW(),1394840507,1,0,0,'sitzung_1_15-03-2014',0,'Sitzung I - Teil 1/1','sitzung_1_15-03-2014.mp3'),
+(2,0,NOW(),1402699307,1,0,0,'sitzung_2_14-06-2014',0,'Sitzung II - Teil 1/1','sitzung_2_14-06-2014.mp3'),
+(3,0,NOW(),1406587307,1,0,0,'sitzung_3_1_29-07-2014',0,'Sitzung III - Teil 1/2','sitzung_3_1_29-07-2014.mp3'),
+(4,0,NOW(),1406587307,1,0,0,'sitzung_3_1_29-07-2014',0,'Sitzung III - Teil 2/2','sitzung_3_2_29-07-2014.mp3'),
+(5,0,NOW(),1410475307,1,0,0,'sitzung_4_1_12-09-2014',0,'Sitzung IV - Teil 1/3','sitzung_4_1_12-09-2014.mp3'),
+(6,0,NOW(),1410475307,1,0,0,'sitzung_4_2_12-09-2014',0,'Sitzung IV - Teil 2/3','sitzung_4_2_12-09-2014.mp3'),
+(7,0,NOW(),1410475307,1,0,0,'sitzung_4_3_12-09-2014',0,'Sitzung IV - Teil 3/3','sitzung_4_3_12-09-2014.mp3'),
+(8,0,NOW(),1412376107,1,0,0,'sitzung_5_1_04-10-2014',0,'Sitzung V - Teil 1/2','sitzung_5_1_04-10-2014.mp3'),
+(9,0,NOW(),1412376107,1,0,0,'sitzung_5_2_04-10-2014',0,'Sitzung V - Teil 2/2','sitzung_5_2_04-10-2014.mp3');
+
+UNLOCK TABLES;
+
+
 DROP TABLE IF EXISTS filecomments;
 CREATE TABLE filecomments (
 	uid int(11) NOT NULL auto_increment,

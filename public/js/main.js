@@ -1,6 +1,7 @@
 jQuery(document).ready(function($){
    var feuserName=jQuery('#feuserName').val();
     var feuserIcon=jQuery('#feuserIcon').val();
+    var baseurl=jQuery('#baseurl').val()+'/';
     
     jQuery('.audiogallery').each(function(index,element){
        var playerid=jQuery(element).attr('id');
@@ -10,6 +11,7 @@ jQuery(document).ready(function($){
         disable_volume: 'on'
                 ,cue:'on'
                 ,autoplay:'off'
+                ,disable_volume: 'off'
                 ,disable_scrub: 'default'
                 ,design_skin: 'skin-wave'
                 ,skinwave_dynamicwaves:'on'
@@ -23,7 +25,7 @@ jQuery(document).ready(function($){
                 ,skinwave_comments_retrievefromajax:"on"
                 ,skinwave_comments_avatar:feuserIcon
                 ,playfrom:'0',
-        'settings_php_handler':'filecomments/switch/'
+        'settings_php_handler':'http://der-rote-faden.ephemeroid.net/filecomments/switch/'
         };
         dzsag_init('#'+playerid,{
         'transition':'fade'

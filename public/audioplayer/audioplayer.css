@@ -146,11 +146,14 @@
 
 .audioplayer.skin-wave .prev-btn {
   top: 160px;
-  left: 270px; }
+  left: 270px; 
+display:none;}
+
 
 .audioplayer.skin-wave .next-btn {
   top: 160px;
-  left: 300px; }
+  left: 300px; 
+display:none;}
 
 /* -- functional styling END */
 /* -- estethic styling */
@@ -725,7 +728,7 @@ div.btn-embed-code-con {
 .audioplayer.skin-wave .comments-holder .dzstooltip-con .the-avatar {
   width: 14px;
   height: 14px;
-  background-color: #111;
+  
   background-position: center center;
   background-size: contain; }
 

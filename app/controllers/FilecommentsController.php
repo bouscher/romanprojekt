@@ -29,9 +29,9 @@ class FilecommentsController extends ControllerBase
                 $hashTagStrng='';
                 $hashTags=$comment->getHashtags();
                 foreach($hashTags as $hashTag){
-                    $hashTagStrng.=$hashTag->title.',';
+                    $hashTagStrng.=$hashTag->title.', ';
                 }
-                $hashTagStrng=substr($hashTagStrng,0,-1);
+                $hashTagStrng=substr($hashTagStrng,0,-2);
                 $playerHTML.='<span class="a-comment with-tooltip" style="left:'.$comment->title.'"><div class="aux-padder"></div><span class="dzstooltip arrow-bottom skin-black" style="width: 250px;"><span class="the-comment-author">'.$hashTagStrng.'</span><br>'.$comment->comment.'<br> ...sagt '.$feuser->username.'</span><div class="the-avatar" style="background-image: url('.$baseUri.$feuser->company.')"></div></span>';
             }
             echo($playerHTML);

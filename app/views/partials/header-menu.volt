@@ -10,7 +10,14 @@
               {% else %}
 			 <li class="dropdown">
               {% endif %}
-			{{- link_to('/files', 'die Sitzungen') -}}				
+			{{- link_to('fileobject', 'die Sitzungen') -}}				
+			</li>	
+                        
+                        
+              
+			 <li class="dropdown">
+              
+			{{- link_to('session/logout', 'Logout') -}}				
 			</li>	
                </ul>
 	  
