@@ -714,9 +714,11 @@ div.btn-embed-code-con {
   display: block;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 130%;
   top: 0;
-  left: 0; }
+  left: 0;
+  border-bottom:2px solid #fff;
+   }
 
 .audioplayer.skin-wave .comments-holder.active {
   visibility: visible; }
