@@ -40,7 +40,10 @@ class FileobjectController extends ControllerBase
             'order' => 'tstamp ASC'
         ));
       $hashtags=Hashtags::find(array(
-            'conditions' => 'deleted=0 AND hidden=0',
+            'conditions' => 'deleted=0 AND hidden=0 AND cruser_id=?1',
+          'bind'=>array(
+            1=>  $user['uid']
+          ),
             'order' => 'tstamp ASC'
         ));
         $user=$this->auth->getIdentity();
