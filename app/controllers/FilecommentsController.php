@@ -14,7 +14,8 @@ class FilecommentsController extends ControllerBase
 {
     public function indexAction(){
         if($this->request->isPost()){
-            $playerUid=explode('_',$this->request->getPost('playerid'))[1];
+            $playerUidArr=explode('_',$this->request->getPost('playerid'));
+            $playerUid=$playerUidArr[1];
             $comments= Filecomments::find(array(
                 'conditions' => 'deleted=0 AND hidden=0 AND pid= ?1 AND cruser_id=?2',
                 'bind' =>array(
@@ -33,7 +34,7 @@ class FilecommentsController extends ControllerBase
                     $hashTagStrng.=$hashTag->title.', ';
                 }
                 $hashTagStrng=substr($hashTagStrng,0,-2);
-                $playerHTML.='<span class="a-comment with-tooltip" style="left:'.$comment->title.'"><div class="aux-padder"></div><span class="dzstooltip arrow-bottom skin-black" style="width: 250px;"><span class="the-comment-author">'.$hashTagStrng.'</span><br>'.$comment->comment.'<br> ...sagt '.$feuser->username.'</span><div class="the-avatar" style="background-image: url('.$baseUri.$feuser->company.')"></div></span>';
+                $playerHTML.='<span class="a-comment with-tooltip" style="left:'.$comment->title.'"><div class="aux-padder"></div><span class="dzstooltip arrow-bottom skin-black" style="width: 250px;"><span class="update" id="commentUpdate_'.$comment->uid.'">✎</span><span class="delete" id="comment_'.$comment->uid.'">X</span><span class="the-comment-author">'.$hashTagStrng.'</span><br><span class="the-comment-comment">'.$comment->comment.'</span><br> ...sagt '.$feuser->username.'</span><div class="the-avatar" style="background-image: url('.$baseUri.$feuser->company.')"></div></span>';
             }
             echo($playerHTML);
             die();
@@ -114,4 +115,83 @@ class FilecommentsController extends ControllerBase
             
         }
     }
+    
+    public function deleteAction(){
+        if($this->request->isPost()){
+            $comment=Filecomments::findFirstByUid($this->request->getPost('uid'));
+            if($comment){
+                $comment->assign(array(
+                   'deleted' =>1,
+                    'hidden'=>1
+                ));
+                $comment->update();				
+            }
+			die();
+        }
+    }
+	
+	public function updateAction(){
+        if($this->request->isPost()){
+			$user=$this->auth->getIdentity();
+            $comment=Filecomments::findFirstByUid($this->request->getPost('uid'));
+            if($comment){
+                $comment->assign(array(
+                   'comment'=>$this->request->getPost('comment')
+                ));
+                $comment->update();
+				$this->removeHashtagCons($this->request->getPost('uid'));
+				 $hashtagArr=explode(',',$this->request->getPost('hashtags'));
+                foreach($hashtagArr as $postedhashtag){
+                    $hashtag=  Hashtags::findFirst(array(
+                       'conditions'=>'deleted=0 AND hidden=0 AND title LIKE ?1',
+                        'bind' => array(1=>$postedhashtag)
+
+                    ));
+                    if(!$hashtag){
+                        $newHashtag=new Hashtags();
+                        $newHashtag->assign(array(
+                            'pid'=>0,
+                            'deleted'=>0,
+                            'hidden'=>0,
+                            'timeindex'=>0,
+                            'usergroup'=>0,
+                           'tstamp' =>time(),
+                            'crdate' => time(),
+                            'cruser_id' => $user['uid'],
+                            'title' => $postedhashtag
+                        ));
+                        $newHashtag->save();
+
+                        $mm=new Filecomments_hashtags_lookup();
+                        $mm->assign(array(
+                           'uid_local'=>$comment->uid,
+                            'uid_foreign'=>$newHashtag->uid
+                        ));
+                        $mm->save();
+                    }else{
+                        $mm=new Filecomments_hashtags_lookup();
+                        $mm->assign(array(
+                           'uid_local'=>$comment->uid,
+                            'uid_foreign'=>$hashtag->uid
+                        ));
+                        $mm->save();
+                    }
+                }
+            }
+			die();
+        }
+    }
+	
+	private function removeHashtagCons($uid){
+		$hashtags=Filecomments_hashtags_lookup::find(array(
+			'conditions'=>'uid_local=?1',
+			'bind'=>array(
+				1=>$uid
+			)
+		));
+		foreach($hashtags as $hashtag ){
+			$hashtag->delete();
+		}
+		return true;
+	}
 }

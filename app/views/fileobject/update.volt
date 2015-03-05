@@ -16,9 +16,24 @@
                 <p>{{file.description}}</p>
             </div>
         </div>
+
     
     
     </div>
+	<div id="comments-updater" class="comments-updater hidden" style="height:190px;">
+    <div class="comments-updater-inner">
+		<span style="font-size:0.8em;color:#f16529;">Jetzt aber richtig.</span>
+        <div class="setting" id="comment-update">
+            <div class="setting-label"></div>
+                <input placeholder="Hashtags mit führendem # und kommasepariert" name="hashtags" type="text" id="hashtag-update-input">
+                <input name="comment-text" type="text" id="comment-update-input">
+				
+                <button class="submit-up-comment dzs-button float-right">Submit</button>
+                <button class="cancel-up-comment dzs-button float-right">Cancel</button><div class="clear">
+            </div>
+        </div>
+     </div>
+  </div>
 </div>
  
 

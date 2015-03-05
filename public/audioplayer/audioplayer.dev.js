@@ -438,7 +438,7 @@ var tstamp=0;
                             url: o.settings_php_handler,
                             data: data,
                             success: function(response) {
-                                if(typeof window.console != "undefined" ){ console.log('Ajax - get - comments - ' + response); }
+                                if(typeof window.console != "undefined" ){  }
 
                                 cthis.prependOnce('<div class="the-comments"></div>', '.the-comments');
 

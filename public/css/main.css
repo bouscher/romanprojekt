@@ -174,7 +174,24 @@ nav a:hover {
 
 
 
+.delete,.update{
+    position:absolute;
+    right:4px;
+    top:2px;
+    cursor:pointer;
+    z-index: 999;    
+    display:block;    
+    font-weight: bold;    
+    font-size:0.8em;
+}
 
+.update{
+	left:2px;
+	top:0px;
+	right:auto;
+	font-size:1em;
+	font-weight: normal;
+}
 
 
 
