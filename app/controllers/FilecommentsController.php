@@ -55,7 +55,8 @@ class FilecommentsController extends ControllerBase
     
     public function createAction(){
         if($this->request->isPost()){
-            
+            $environment= $this->config['application']['debug'] ? 'development' : 'production';
+			$baseUri=$this->config['application'][$environment]['staticBaseUri'];
                 $fileobject=explode('_',$this->request->getPost('playerid'));
                 $user=$this->auth->getIdentity();
                 $comment=new Filecomments();
@@ -74,6 +75,7 @@ class FilecommentsController extends ControllerBase
                 ));
 
                 $comment->save();
+                $feuser=$comment->getFeuser();
                 $hashtagArr=explode(',',$this->request->getPost('hashtags'));
                 foreach($hashtagArr as $postedhashtag){
                     $hashtag=  Hashtags::findFirst(array(
@@ -111,6 +113,8 @@ class FilecommentsController extends ControllerBase
                         $mm->save();
                     }
                 }
+                $playerHTML.='<span class="a-comment dzstooltip-con with-tooltip" style="left:'.$comment->title.'"><div class="aux-padder"></div><span class="dzstooltip arrow-bottom skin-black" style="width: 250px;"><span class="update" id="commentUpdate_'.$comment->uid.'">✎</span><span class="delete" id="comment_'.$comment->uid.'">X</span><span class="the-comment-author">'.$this->request->getPost('hashtags').'</span><br><span class="the-comment-comment">'.$comment->comment.'</span><br> ...sagt '.$feuser->username.'</span><div class="the-avatar" style="background-image: url('.$baseUri.$feuser->company.')"></div></span>';
+                echo($playerHTML);
                 die();
             
         }
@@ -126,7 +130,16 @@ class FilecommentsController extends ControllerBase
                 ));
                 $comment->update();				
             }
-			die();
+            $lookups=Filecomments_hashtags_lookup::find(array(
+                'conditions'=>'uid_local=?1',
+                'bind' => array(
+                    1=>$comment->uid
+                )
+            ));
+            foreach($lookup as $lookup){
+                $lookup->delete();
+            }
+            die();
         }
     }
 	

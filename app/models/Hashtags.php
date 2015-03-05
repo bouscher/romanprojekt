@@ -11,8 +11,8 @@ class Hashtags extends Model{
 	
     public function initialize()
     {
-        $this->belongsTo("pid", "romanprojekt\Models\fileobject", "uid",array('alias' => 'fileobject'));
-	 $this->hasManyToMany("uid", "nltool\Models\Filecomments_Hashtags_lookup", "uid_foreign","uid_local","nltool\Models\Filecomments","uid",array('alias' => 'filecomments'));
+        $this->belongsTo("pid", "romanprojekt\Models\Fileobject", "uid",array('alias' => 'fileobject'));
+	 $this->hasManyToMany("uid", "romanprojekt\Models\Filecomments_hashtags_lookup", "uid_foreign","uid_local","romanprojekt\Models\Filecomments","uid",array('alias' => 'filecomments'));
     }
 	    
 }

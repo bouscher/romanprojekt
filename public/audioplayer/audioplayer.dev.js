@@ -1359,16 +1359,12 @@ var tstamp=0;
                     url: o.settings_php_handler,
                     data: data,
                     success: function(response) {
-                        if(response.charAt(response.length-1) == '0'){
-                            response = response.slice(0,response.length-1);
-                        }
-                        if(typeof window.console != "undefined" ){
-                            console.log('Got this from the server: ' + response);
-                        }
+                        
+                        
 
                         //console.info(data.postdata);
-                        _commentsHolder.append(data.postdata);
-
+                        _commentsHolder.append(response);
+$('.dzstooltip-con.placeholder').remove();
                         //jQuery('#save-ajax-loading').css('visibility', 'hidden');
                     },
                     error:function(arg){
@@ -1376,6 +1372,7 @@ var tstamp=0;
                             console.log('Got this from the server: ' + arg, arg);
                         };
                         _commentsHolder.append(data.postdata);
+                        
                     }
                 });
             }

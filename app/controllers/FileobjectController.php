@@ -3,6 +3,7 @@ namespace romanprojekt\Controllers;
 use romanprojekt\Models\Fileobject;
 use romanprojekt\Models\Feusers;
 use romanprojekt\Models\Hashtags;
+use romanprojekt\Models\Filecomments;
     
 	
 /**
@@ -55,6 +56,7 @@ class FileobjectController extends ControllerBase
             ),
             'order'=>'title ASC'
         ));
+        
         $this->view->setVar('file',$filerecord);
         $this->view->setVar('hashtags',$hashtags);
         $this->view->setVar('feuserName',$user['username']);

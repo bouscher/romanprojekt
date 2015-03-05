@@ -10,8 +10,8 @@ class Fileobject extends Model{
 	
     public function initialize()
     {
-        $this->hasMany("uid", "romanprojekt\Models\filecomments", "pid",array('alias' => 'comments'));
-	$this->hasMany("uid", "romanprojekt\Models\hashtags", "pid",array('alias' => 'hashtags'));
+        $this->hasMany("uid", "romanprojekt\Models\Filecomments", "pid",array('alias' => 'comments'));
+	$this->hasMany("uid", "romanprojekt\Models\Hashtags", "pid",array('alias' => 'hashtags'));
     }
 	    
 }

@@ -48,6 +48,7 @@ jQuery(document).ready(function($){
    jQuery('.comments-holder').on('click', '.update', function(e) {
        var commentUid=jQuery(this).attr("id").split('_')[1];
 	   var hashtagsEl=jQuery(this).parent().find('.the-comment-author');	   
+           
 	   var commentEl=jQuery(this).parent().find('.the-comment-comment');
        jQuery('#hashtag-update-input').val(hashtagsEl.html());
 	   jQuery('#comment-update-input').val(commentEl.html());

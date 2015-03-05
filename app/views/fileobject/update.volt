@@ -43,7 +43,9 @@
     <h3>Bisher verwendete Hashtags alphabetisch geordnet. </h3>
     <p>
         {% for hashtag in hashtags %}
+            {% if hashtag.countFilecomments().count() > 0 %}            
             {{hashtag.title}},
+            {% endif %}
         {% endfor %}
     </p>
     
