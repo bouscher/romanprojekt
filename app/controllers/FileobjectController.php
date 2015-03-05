@@ -31,6 +31,7 @@ class FileobjectController extends ControllerBase
         
     }
     public function updateAction(){
+		$user=$this->auth->getIdentity();
         $uid=$this->dispatcher->getParam("uid")?$this->dispatcher->getParam("uid"):0;
         $filerecord=Fileobject::findFirst(array(
             'conditions' => 'deleted=0 AND hidden=0 AND uid =?1',
@@ -46,7 +47,7 @@ class FileobjectController extends ControllerBase
           ),
             'order' => 'tstamp ASC'
         ));
-        $user=$this->auth->getIdentity();
+        
         $userData=Feusers::findFirst(array(
            'conditions' => 'uid=?1',
             'bind'=>array(

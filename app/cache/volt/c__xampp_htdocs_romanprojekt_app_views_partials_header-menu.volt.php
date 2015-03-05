@@ -10,10 +10,6 @@
               <?php } else { ?>
 			 <li class="dropdown">
               <?php } ?><?php echo $this->tag->linkTo(array('/files', 'die Sitzungen')); ?></li>	
-                        
-                        
-              
-			 <li class="dropdown"><?php echo $this->tag->linkTo(array('/session/logout', 'Logout')); ?></li>	
                </ul>
 	  
 	</nav>

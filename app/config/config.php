@@ -11,11 +11,11 @@ return new \Phalcon\Config(array(
 	'messagesDir'     => APP_PATH . '/app/messages/',		
 	'formsDir'     => APP_PATH . '/app/forms',	
 	'appsDir' => APP_PATH.'/app/',
-        'development'    => array(
+        'production'    => array(
             'staticBaseUri' => '/romanprojekt/',
             'baseUri'       => '/romanprojekt/'
         ),
-        'production'     => array(
+        'development'     => array(
             'staticBaseUri' => '/',
             'baseUri'       => '/'
         ),
@@ -36,7 +36,7 @@ return new \Phalcon\Config(array(
 		'en' => 'English'
 	),
 	'database'=>array(
-		'debug'=>array(
+		'production'=>array(
 			'adapter'  => 'Mysql',
 			'host'     => 'localhost',
 			'username' => 'root',
@@ -44,7 +44,7 @@ return new \Phalcon\Config(array(
 			'dbname'   => 'collabtool',
 			'charset'  => 'utf8'
 		),
-                'production'=>array(
+                'debug'=>array(
 			'adapter'  => 'Mysql',
 			'host'     => '002.mysql.db.fge.5hosting.com',
 			'username' => 'u1272_admin',

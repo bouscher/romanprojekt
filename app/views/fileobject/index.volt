@@ -15,5 +15,4 @@
 <input type="hidden" value="{{feuserName}}" id="feuserName">
 <input type="hidden" value="{{ baseurl }}{{feuserIcon}}" id="feuserIcon">
 <input type="hidden" value="{{ baseurl }}" id="baseurl">
-</div>
 {% endif %}

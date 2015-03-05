@@ -1,3 +1,7 @@
+AuthType Basic
+AuthName "Adminbereich"
+AuthUserFile /data/www/b4/1272/html/romanprojekt/pw/.htpasswd
+require valid-user
 <IfModule mod_rewrite.c>
 	RewriteEngine on
 	RewriteRule  ^$ public/    [L]

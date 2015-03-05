@@ -16,7 +16,7 @@ class FilecommentsController extends ControllerBase
         if($this->request->isPost()){
             $playerUid=explode('_',$this->request->getPost('playerid'))[1];
             $comments= Filecomments::find(array(
-                'conditions' => 'deleted=0 AND hidden=0 AND pid= ?1 AND cruser_id',
+                'conditions' => 'deleted=0 AND hidden=0 AND pid= ?1 AND cruser_id=?2',
                 'bind' =>array(
                     1 => $playerUid,
                     2=>$this->auth->getIdentity()['uid']
